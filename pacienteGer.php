@@ -39,7 +39,54 @@
 
     <main>
         <div class="container">
-            <form class="row g-3">
+            <?php
+            spl_autoload_register(function ($class) {
+                require_once "./Classes/{$class}.class.php";
+            });
+            if (filter_has_var(INPUT_GET, 'id')) {
+                $paciente = new Paciente();
+                $id = filter_input(INPUT_GET, 'id');
+                $pacEdit = $paciente->buscar('idPac', $id);
+            }
+            if (filter_has_var(INPUT_GET, 'idDel')) {
+                $paciente = new Paciente();
+                $id = filter_input(INPUT_GET, 'idDel');
+                $paciente->deletar('idPac', $id);
+            ?>
+                <script>
+                    window.location.href = 'pacientes.php';
+                </script>
+            <?php
+            }
+            if (filter_has_var(INPUT_POST, 'btnGravar')) {
+                if (isset($_FILES['filFoto'])) {
+                    $ext = strtolower(substr($_FILES['filFoto']['name'], -4));
+                    $nomeArq = md5(date("Y.m.d-H.i.s")).$ext;
+                    $local = "imagesPac/"; 
+                    move_uploaded_file($_FILES['filFoto']['tmp_name'], $local . $nomeArq);
+                }
+                $paciente = new Paciente();
+                $id = filter_input(INPUT_POST, 'txtId');
+                $paciente->setIdPac($id);
+                $paciente->setNomePac(filter_input(INPUT_POST, 'txtNome'));
+                $paciente->setEnderecoPac(filter_input(INPUT_POST, 'txtEndereco'));
+                $paciente->setBairroPac(filter_input(INPUT_POST, 'txtBairro'));
+                $paciente->setCidadePac(filter_input(INPUT_POST, 'txtCidade'));
+                $paciente->setEstadoPac(filter_input(INPUT_POST, 'sltEstado'));
+                $paciente->setCepPac(filter_input(INPUT_POST, 'txtCep'));
+                $paciente->setNascimentoPac(filter_input(INPUT_POST, 'txtNascimento'));
+                $paciente->setEmailPac(filter_input(INPUT_POST, 'txtEmail'));
+                $paciente->setFotoPac($nomeArq);
+
+                if (empty($id)) {
+                    $paciente->inserir();
+                } else {
+                    $paciente->atualizar('idPac', $id);
+                }
+            }
+
+            ?>
+            <form class="row g-3" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
                 <div class="col-12">
                     <label for="txtNome" class="form-label">Nome</label>
                     <input type="text" class="form-control" id="txtNome" placeholder="Digite seu nome..." name="txtNome">
@@ -107,7 +154,7 @@
                 </div>
                 <div class="col-12">
                     <label for="filFoto" class="form-label">Adicione sua Foto</label>
-                    <input class="form-control" type="file" id="filFoto" name="filFoto">
+                    <input class="form-control" type="file" id="filFoto" name="filFoto" accept="image/*">
                 </div>
                 <div class="col-12">
                     <button type="submit" class="btn btn-primary" name="btnGravar">Gravar</button>

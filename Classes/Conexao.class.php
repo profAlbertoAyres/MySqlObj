@@ -15,13 +15,13 @@ final class Conexao
                 define('db_host', 'localhost');
             }
             if (!defined('db_pass')) {
-                define('db_pass', 'root');
+                define('db_pass', 'Password123#@!');
             }
             if (!defined('db_name')) {
-                define('db_name', 'AulaTec');
+                define('db_name', 'Clinica');
             }
             if (!defined('db_port')) {
-                define('db_port', 3360);
+                define('db_port', 3306);
             }
 
             $db = new mysqli(db_host, db_user, db_pass, db_name, db_port) or die('Erro ao conectar' . $db->connect_error);
