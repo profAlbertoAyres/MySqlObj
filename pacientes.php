@@ -36,42 +36,42 @@
                 </div>
             </div>
         </nav>
-     </header>
-        <main class="mt-3">
-            <div class="container">
-                <table class="table">
-                    <thead class="table-dark">
-                        <tr>
-                            <th>#</th>
-                            <th>Nome</th>
-                            <th>E-mail</th>
-                            <th>Celular</th>
-                            <th>Açoẽs</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <a href="#" class="btn btn-secondary">
-                                    <span class="material-symbols-outlined">
-                                        edit_square
-                                    </span>
-                                </a>
-                                <a href="#" class="btn btn-danger">
-                                    <span class="material-symbols-outlined">
-                                        delete
-                                    </span>
-                                </a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </main>
+    </header>
+    <main class="mt-3">
+        <div class="container">
+            <table class="table">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Açoẽs</th>
+                        <th>Foto</th>
+                        <th>Nome</th>
+                        <th>E-mail</th>
+                        <th>Celular</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <a href="#" class="btn btn-secondary">
+                                <span class="material-symbols-outlined">
+                                    edit_square
+                                </span>
+                            </a>
+                            <a href="#" class="btn btn-danger">
+                                <span class="material-symbols-outlined">
+                                    delete
+                                </span>
+                            </a>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
 
 </body>
 
