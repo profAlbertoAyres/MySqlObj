@@ -240,8 +240,7 @@ class Paciente extends Crud
      * @param mixed $id
      * @return mixed
      */
-    public function atualizar($campo, $id)
-    {
+    public function atualizar($campo, $id){
         $nome = $this->getNomePac();
         $endereco = $this->getEnderecoPac();
         $bairro = $this->getBairroPac();
@@ -251,9 +250,8 @@ class Paciente extends Crud
         $nascimento = $this->getNascimentoPac();
         $email = $this->getEmailPac();
         $celular = $this->getCelularPac();
-        $foto = $this->getFotoPac();
 
-        $sqlAtualizar = "UPDATE $this->tabela SET nomePac ='$nome', enderecoPac = '$endereco', bairroPac = '$bairro', cidadePac = '$cidade', estadoPac '$estado', cepPac = '$cep', nascimentoPac = '$nascimento', emailPac = '$email' , celularPac '$celular'";
+        $sqlAtualizar = "UPDATE $this->tabela SET nomePac ='$nome', enderecoPac = '$endereco', bairroPac = '$bairro', cidadePac = '$cidade', estadoPac = '$estado', cepPac = '$cep', nascimentoPac = '$nascimento', emailPac = '$email' , celularPac = '$celular' where {$campo} = {$id}";
         if (Conexao::query($sqlAtualizar)) {
             header('location: pacientes.php');
         }
