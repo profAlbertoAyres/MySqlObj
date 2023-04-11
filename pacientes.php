@@ -13,7 +13,7 @@
 
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <nav class="navbar bg-dark navbar-expand-lg" data-bs-theme="dark">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">Clinica IFRO</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,7 +39,7 @@
         </nav>
     </header>
     <main class="mt-3">
-        <div class="container">
+        <div class="container mt-3">
             <table class="table">
                 <thead class="table-dark">
                     <tr>
@@ -51,40 +51,26 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php
-                    spl_autoload_register(function ($class) {
-                        require_once "./Classes/{$class}.class.php";
-                    });
-                    $paciente = new Paciente();
-                    $dadosBanco =  $paciente->listar();
-                    while($row = $dadosBanco->fetch_object()){
-                    ?>
                     <tr>
                         <td>
-                            <a href="pacienteGer.php?id=<?php echo $row->idPac ?>" class="btn btn-secondary">
+                            <a href="#" class="btn btn-secondary">
                                 <span class="material-symbols-outlined">
                                     edit_square
                                 </span>
                             </a>
-                            <a href="pacienteGer.php?idDel="<?php echo $row->idPac ?>" class="btn btn-danger">
+                            <a href="#" class="btn btn-danger">
                                 <span class="material-symbols-outlined">
                                     delete
                                 </span>
                             </a>
                         </td>
-                        <td>
-                            <img src="imagesPac/<?php echo $row->fotoPac;?>" alt="Foto do paciente <?php echo $row->nomePac; ?>" class="imgred">
-                        </td>
-                        <td><?php echo $row->nomePac; ?></td>
-                        <td><?php echo $row->emailPac; ?></td>
-                        <td><?php echo $row->celularPac; ?></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                     </tr>
-                    <?php } ?>
                 </tbody>
             </table>
-            <div class="col-12">
-                <a href="pacienteGer.php" class="btn btn-primary">Novo Paciente</a>
-            </div>
         </div>
     </main>
 
