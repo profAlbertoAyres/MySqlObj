@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -43,28 +44,23 @@
             spl_autoload_register(function ($class) {
                 require_once "./Classes/{$class}.class.php";
             });
-            if (filter_has_var(INPUT_GET, 'id')) {
+            if(filter_has_var(INPUT_GET,"id")){
+                $id = filter_input(INPUT_GET,'id');
                 $paciente = new Paciente();
-                $id = filter_input(INPUT_GET, 'id');
-                $pacEdit = $paciente->buscar('idPac', $id);
-            }
-            if (filter_has_var(INPUT_GET, 'idDel')) {
-                $paciente = new Paciente();
-                $id = filter_input(INPUT_GET, 'idDel');
-                $paciente->deletar('idPac', $id);
-            ?>
-                <script>
-                    window.location.href = 'pacientes.php';
-                </script>
-            <?php
+                $editPac = $paciente->buscar('idPac',$id);
             }
             if (filter_has_var(INPUT_POST, 'btnGravar')) {
+                $nomeArq = filter_input(INPUT_POST,'nomeAntigo');
                 if (isset($_FILES['filFoto'])) {
-                    $ext = strtolower(substr($_FILES['filFoto']['name'], -4));
-                    $nomeArq = md5(date("Y.m.d-H.i.s")).$ext;
+                    $ext = strtolower(pathinfo($_FILES['filFoto']['name'], PATHINFO_EXTENSION));
+                    
+                    if(empty($nomeArq)){
+                        $nomeArq = md5(date("Y.m.d-H.i.s")).$ext;
+                    }
                     $local = "imagesPac/"; 
                     move_uploaded_file($_FILES['filFoto']['tmp_name'], $local . $nomeArq);
                 }
+
                 $paciente = new Paciente();
                 $id = filter_input(INPUT_POST, 'txtId');
                 $paciente->setIdPac($id);
@@ -87,9 +83,11 @@
 
             ?>
             <form class="row g-3" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="txtId" value="<?php echo isset($editPac->idPac)?$editPac->idPac:null; ?>">
+            <input type="hidden" name="nomeAntigo" value="<?php isset($editPac->fotoPac)?$editPac->fotoPac:null; ?>">
                 <div class="col-12">
                     <label for="txtNome" class="form-label">Nome</label>
-                    <input type="text" class="form-control" id="txtNome" placeholder="Digite seu nome..." name="txtNome">
+                    <input type="text" class="form-control" id="txtNome" placeholder="Digite seu nome..." name="txtNome" value="<?php echo isset($editPac->nomePac)?$editPac->nomePac:NULL; ?>">
                 </div>
                 <div class="col-12">
                     <label for="txtEndereco" class="form-label">Endereço</label>
@@ -105,9 +103,14 @@
                 </div>
                 <div class="col-md-4">
                     <label for="sltEstado" class="form-label">Estado</label>
+                    <?php $estadoSelec = isset($editPac->estadoPac)?$editPac->estadoPac:null; ?>
                     <select id="sltEstado" class="form-select" name="sltEstado">
                         <option value="" selected hidden>Escolha...</option>
-                        <option value="AC">Acre</option>
+                        <option value="AC"
+                        <?php 
+                            if($estadoSelec == "AC"){echo 'selected';}
+                        ?>
+                        >Acre</option>
                         <option value="AL">Alagoas</option>
                         <option value="AP">Amapá</option>
                         <option value="AM">Amazonas</option>
@@ -120,7 +123,10 @@
                         <option value="MT">Mato Grosso</option>
                         <option value="MS">Mato Grosso do Sul</option>
                         <option value="MG">Minas Gerais</option>
-                        <option value="PA">Pará</option>
+                        <option value="PA" <?php 
+                            if($estadoSelec == "PA"){echo 'selected';}
+                        ?>
+                        >Pará</option>
                         <option value="PB">Paraíba</option>
                         <option value="PR">Paraná</option>
                         <option value="PE">Pernambuco</option>
@@ -128,7 +134,11 @@
                         <option value="RJ">Rio de Janeiro</option>
                         <option value="RN">Rio Grande do Norte</option>
                         <option value="RS">Rio Grande do Sul</option>
-                        <option value="RO">Rondônia</option>
+                        <option value="RO"
+                        <?php 
+                            if($estadoSelec == "RO"){echo 'selected';}
+                        ?>
+                        >Rondônia</option>
                         <option value="RR">Roraima</option>
                         <option value="SC">Santa Catarina</option>
                         <option value="SP">São Paulo</option>

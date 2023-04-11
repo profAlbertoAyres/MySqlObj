@@ -5,18 +5,17 @@
         abstract function atualizar($campo, $id);
 
         public function listar(){
-            $sqlSelect = "select * from {$this->tabela}";
-            return Conexao::query($sqlSelect);
+            $selctSql = "SELECT * FROM {$this->tabela}";
+            return Conexao::query($selctSql);
         }
-
         public function buscar($campo, $id){
-            $sqlSelect = "select * from {$this->tabela} where $campo=$id";
-            $dados =  Conexao::query($sqlSelect);
+            $selctSql = "SELECT * FROM {$this->tabela} WHERE $campo = {$id}";
+            $dados = Conexao::query($selctSql);
             return $dados->fetch_object();
         }
 
-        public function deletar($campo, $id){
-            $sqlSelect = "delete from {$this->tabela} where $campo=$id";
-            return  Conexao::query($sqlSelect);
+        public function deletar($campo,$id){
+            $selctSql = "DELETE FROM {$this->tabela} WHERE $campo = {$id}";
+            return Conexao::query($selctSql);
         }
     }

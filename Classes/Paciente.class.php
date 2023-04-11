@@ -253,7 +253,7 @@ class Paciente extends Crud
         $celular = $this->getCelularPac();
         $foto = $this->getFotoPac();
 
-        $sqlAtualizar = "UPDATE $this->tabela SET nomePac ='$nome', enderecoPac = '$endereco', bairroPac = '$bairro', cidadePac = '$cidade', estadoPac '$estado', cepPac = '$cep', nascimentoPac = '$nascimento', emailPac = '$email' , celularPac '$celular'";
+        $sqlAtualizar = "UPDATE $this->tabela SET nomePac ='$nome', enderecoPac = '$endereco', bairroPac = '$bairro', cidadePac = '$cidade', estadoPac ='$estado', cepPac = '$cep', nascimentoPac = '$nascimento', emailPac = '$email' , celularPac ='$celular', fotoPac = '$foto' WHERE $campo = {$id}";
         if (Conexao::query($sqlAtualizar)) {
             header('location: pacientes.php');
         }
