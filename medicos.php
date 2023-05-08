@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="css/layout.css">
-    <title>Pacientes</title>
+    <title>Médicos</title>
 </head>
 
 <body>
@@ -25,10 +25,10 @@
                             <a class="nav-link" href="index.php">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Paciente</a>
+                            <a class="nav-link" href="pacientes.php">Paciente</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="medicos.php">Médico</a>
+                            <a class="nav-link active" aria-current="page" href="medicos.php">Médico</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link">Consultas</a>
@@ -59,8 +59,8 @@
                 <thead class="table-dark">
                     <tr>
                         <th scope="col">Açoẽs</th>
-                        <th scope="col">Foto</th>
                         <th scope="col">Nome</th>
+                        <th scope="col">CRM</th>
                         <th scope="col">E-mail</th>
                         <th scope="col">Celular</th>
                     </tr>
@@ -70,19 +70,19 @@
                     spl_autoload_register(function ($class) {
                         require_once "./Classes/{$class}.class.php";
                     });
-                    $paciente = new Paciente();
+                    $medico = new Medico();
                     if (filter_has_var(INPUT_POST, 'txtPesquisar')) {
                         $parametro = filter_input(INPUT_POST, 'txtPesquisar');
-                        $where = "where (nomePac like '%$parametro%' ) or (emailPac like '%$parametro%' )";
-                        $dadosBanco =  $paciente->listar($where);
+                        $where = "where (nomeMed like '%$parametro%' ) or (emailMed like '%$parametro%' )";
+                        $dadosBanco =  $medico->listar($where);
                     } else {
-                        $dadosBanco =  $paciente->listar();
+                        $dadosBanco =  $medico->listar();
                     }
                     while ($row = $dadosBanco->fetch_object()) {
                     ?>
                         <tr>
                             <td class="align-middle" scope="row">
-                                <a href="pacienteGer.php?id=<?php echo $row->idPac ?>" class="btn btn-secondary">
+                                <a href="medicoGer.php?id=<?php echo $row->idMed ?>" class="btn btn-secondary">
                                     <span class="material-symbols-outlined">
                                         edit_square
                                     </span>
@@ -93,21 +93,19 @@
                                     </span>
                                 </a>
                             </td>
-                            <td class="align-middle">
-                                <img src="imagesPac/<?php echo $row->fotoPac ?>" alt="Foto do paciente <?php echo $row->nomePac ?>" class="imgRed">
-                            </td>
-                            <td class="align-middle"><?php echo $row->nomePac ?></td>
-                            <td class="align-middle"><?php echo $row->emailPac ?></td>
-                            <td class="align-middle"><?php echo $row->celularPac ?></td>
+                            <td class="align-middle"><?php echo $row->nomeMed ?></td>
+                            <td class="align-middle"><?php echo $row->crmMed ?></td>
+                            <td class="align-middle"><?php echo $row->emailMed ?></td>
+                            <td class="align-middle"><?php echo $row->celularMed ?></td>
                         </tr>
                     <?php } ?>
                 </tbody>
             </table>
             <div class="col-12">
-                <a href="pacienteGer.php" class="btn btn-primary">
+                <a href="medicoGer.php" class="btn btn-primary">
                     <span class="material-symbols-outlined">
                         note_add
-                    </span> Novo Paciente
+                    </span> Novo Médico
 
                 </a>
             </div>

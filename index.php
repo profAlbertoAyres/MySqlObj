@@ -27,7 +27,7 @@
                             <a class="nav-link" href="pacientes.php">Paciente</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Médico</a>
+                            <a class="nav-link" href="medicos.php">Médico</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link">Consultas</a>

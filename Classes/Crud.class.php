@@ -4,8 +4,8 @@
         abstract function inserir();
         abstract function atualizar($campo, $id);
 
-        public function listar(){
-            $sqlSelect = "select * from {$this->tabela}";
+        public function listar( $where = null){
+            $sqlSelect = "select * from {$this->tabela} $where";
             return Conexao::query($sqlSelect);
         }
 
