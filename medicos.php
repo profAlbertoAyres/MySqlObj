@@ -31,7 +31,7 @@
                             <a class="nav-link active" aria-current="page" href="medicos.php">Médico</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="especilidades.php">Especialidade</a>
+                            <a class="nav-link" href="especialidades.php">Especialidade</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link">Consultas</a>
