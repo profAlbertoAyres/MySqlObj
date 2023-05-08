@@ -102,7 +102,7 @@
                 <a href="especialidadeGer.php" class="btn btn-primary">
                     <span class="material-symbols-outlined">
                         note_add
-                    </span> Novo Médico
+                    </span> Nova Especilidade
 
                 </a>
             </div>
