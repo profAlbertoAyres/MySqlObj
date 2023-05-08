@@ -28,10 +28,10 @@
                             <a class="nav-link" href="pacientes.php">Paciente</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="medicos.php">Médico</a>
+                            <a class="nav-link" href="medicos.php">Médico</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="especilidades.php">Especialidade</a>
+                            <a class="nav-link active" aria-current="page" href="especilidades.php">Especialidade</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link">Consultas</a>
@@ -62,10 +62,7 @@
                 <thead class="table-dark">
                     <tr>
                         <th scope="col">Açoẽs</th>
-                        <th scope="col">Nome</th>
-                        <th scope="col">CRM</th>
-                        <th scope="col">E-mail</th>
-                        <th scope="col">Celular</th>
+                        <th scope="col">Nome</th>>
                     </tr>
                 </thead>
                 <tbody>
@@ -73,19 +70,19 @@
                     spl_autoload_register(function ($class) {
                         require_once "./Classes/{$class}.class.php";
                     });
-                    $medico = new Medico();
+                    $especialidade = new Especialidade();
                     if (filter_has_var(INPUT_POST, 'txtPesquisar')) {
                         $parametro = filter_input(INPUT_POST, 'txtPesquisar');
-                        $where = "where (nomeMed like '%$parametro%' ) or (emailMed like '%$parametro%' )";
-                        $dadosBanco =  $medico->listar($where);
+                        $where = "where (nomeEsp like '%$parametro%' )";
+                        $dadosBanco =  $especialidade->listar($where);
                     } else {
-                        $dadosBanco =  $medico->listar();
+                        $dadosBanco =  $especialidade->listar();
                     }
                     while ($row = $dadosBanco->fetch_object()) {
                     ?>
                         <tr>
                             <td class="align-middle" scope="row">
-                                <a href="medicoGer.php?id=<?php echo $row->idMed ?>" class="btn btn-secondary">
+                                <a href="especialidadeGer.php?id=<?php echo $row->idEsp ?>" class="btn btn-secondary">
                                     <span class="material-symbols-outlined">
                                         edit_square
                                     </span>
@@ -96,16 +93,13 @@
                                     </span>
                                 </a>
                             </td>
-                            <td class="align-middle"><?php echo $row->nomeMed ?></td>
-                            <td class="align-middle"><?php echo $row->crmMed ?></td>
-                            <td class="align-middle"><?php echo $row->emailMed ?></td>
-                            <td class="align-middle"><?php echo $row->celularMed ?></td>
+                            <td class="align-middle"><?php echo $row->nomeEsp ?></td>
                         </tr>
                     <?php } ?>
                 </tbody>
             </table>
             <div class="col-12">
-                <a href="medicoGer.php" class="btn btn-primary">
+                <a href="especialidadeGer.php" class="btn btn-primary">
                     <span class="material-symbols-outlined">
                         note_add
                     </span> Novo Médico

@@ -30,6 +30,9 @@
                             <a class="nav-link" href="medicos.php">Médico</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="especilidades.php">Especialidade</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link">Consultas</a>
                         </li>
                     </ul>

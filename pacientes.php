@@ -31,6 +31,9 @@
                             <a class="nav-link" href="medicos.php">Médico</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="especilidades.php">Especialidade</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link">Consultas</a>
                         </li>
                     </ul>
@@ -66,7 +69,6 @@
                     </tr>
                 </thead>
                 <tbody>
-<<<<<<< HEAD
                     <?php
                     spl_autoload_register(function ($class) {
                         require_once "./Classes/{$class}.class.php";
@@ -102,26 +104,6 @@
                             <td class="align-middle"><?php echo $row->celularPac ?></td>
                         </tr>
                     <?php } ?>
-=======
-                    <tr>
-                        <td>
-                            <a href="#" class="btn btn-secondary">
-                                <span class="material-symbols-outlined">
-                                    edit_square
-                                </span>
-                            </a>
-                            <a href="#" class="btn btn-danger">
-                                <span class="material-symbols-outlined">
-                                    delete
-                                </span>
-                            </a>
-                        </td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
->>>>>>> e5867cb265b4b8d304689c1f3ff0ac5584563269
                 </tbody>
             </table>
         </div>
