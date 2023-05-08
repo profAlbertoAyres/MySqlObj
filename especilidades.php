@@ -57,8 +57,7 @@
                         </button>
                     </div>
                 </form>
-            </div>
-            <table class="table mt-3">
+            </div><table class="table mt-3">
                 <thead class="table-dark">
                     <tr>
                         <th scope="col">Açoẽs</th>
