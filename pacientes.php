@@ -114,6 +114,14 @@
                     <?php } ?>
                 </tbody>
             </table>
+            <div class="col-12">
+                <a href="pacienteGer.php" class="btn btn-primary">
+                    <span class="material-symbols-outlined">
+                        note_add
+                    </span> Novo Paciente
+
+                </a>
+            </div>
         </div>
     </main>
 

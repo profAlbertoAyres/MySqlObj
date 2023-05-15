@@ -42,7 +42,7 @@ if (filter_has_var(INPUT_POST, 'pacienteCon')) {
                             <a class="nav-link" href="index.php">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Paciente</a>
+                            <a class="nav-link active" aria-current="page" href="pacientes.php">Paciente</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="medicos.php">Médico</a>
