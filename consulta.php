@@ -63,7 +63,7 @@ if (filter_has_var(INPUT_POST, 'pacienteCon')) {
             <div class="d-flex flex-row-reverse">
                 <a href="consultaGer.php" class="btn btn-info">Nova Consulta</a>
             </div>
-            
+
             <table class="table mt-3">
                 <thead class="table-dark">
                     <tr>
@@ -94,7 +94,7 @@ if (filter_has_var(INPUT_POST, 'pacienteCon')) {
                                 </a>
                             </td> -->
                             <td class="align-middle"><?php echo $row->nomeMed ?></td>
-                            <td class="align-middle"><?php echo $row->dataCon ?></td>
+                            <td class="align-middle"><?php echo date('d/m/Y',strtotime($row->dataCon)) ?></td>
                             <td class="align-middle"><?php echo $row->horaCon ?></td>
                         </tr>
                     <?php } ?>
