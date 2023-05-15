@@ -93,8 +93,8 @@
                     <input type="text" class="form-control" id="txtCelular" name="txtCelular" value="<?php echo isset($medEdit->celularMed) ? $medEdit->celularMed : null; ?>">
                 </div>
                 <div class="col-md-6">
-                    <label for="sltEstado" class="form-label">Especialidade</label>
-                    <select id="sltEstado" class="form-select" name="sltEspecialidade">
+                    <label for="sltEspecialidade" class="form-label">Especialidade</label>
+                    <select id="sltEspecialidade" class="form-select" name="sltEspecialidade">
                         <?php $espSel = isset($medEdit->especialidadeMed) ? $medEdit->especialidadeMed : null; ?>
                         <option value="" selected hidden>Escolha...</option>
                         <?php 
@@ -103,10 +103,14 @@
                         $dadosBanco =  $especialidade->listar();
                         while ($row = $dadosBanco->fetch_object()) {
                         ?>
-                        <option value="<?php echo $row->idEsp ?>" <?php if ($espSel === $row->idEsp) {
-                                                echo 'selected';
-                                            } ?>><?php echo $row->nomeEsp ?></option>
-                                            <?php }?>
+                        <option value="<?php echo $row->idEsp ?>" 
+                        <?php if ($espSel === $row->idEsp) {
+                                echo 'selected';
+                                            } ?>
+                        >
+                                            <?php echo $row->nomeEsp ?>
+                                        </option>
+                                            <?php } ?>
                     </select>
                 </div>
                 <div class="col-md-6">
