@@ -29,6 +29,9 @@
                             <a class="nav-link" href="#">Médico</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="especialidades.php">Especialidade</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link">Consultas</a>
                         </li>
                     </ul>
