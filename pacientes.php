@@ -95,6 +95,11 @@
                                         delete
                                     </span>
                                 </a>
+                                <a href="#">
+                                    <span class="material-symbols-outlined">
+                                        description
+                                    </span>
+                                </a>
                             </td>
                             <td class="align-middle">
                                 <img src="imagesPac/<?php echo $row->fotoPac ?>" alt="Foto do paciente <?php echo $row->nomePac ?>" class="imgRed">
