@@ -1,5 +1,5 @@
 <?php 
-    echo basename($_SERVER['PHP_SELF']);
+   // echo basename($_SERVER['PHP_SELF']);
 ?>
 <nav class="navbar bg-dark navbar-expand-lg" data-bs-theme="dark">
     <div class="container-fluid">
