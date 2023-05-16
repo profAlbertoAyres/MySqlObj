@@ -90,7 +90,7 @@
                                         edit_square
                                     </span>
                                 </a>
-                                <a href="#" class="btn btn-danger">
+                                <a href="pacienteGer.php?idDel=<?php echo $row->idPac ?>" class="btn btn-danger">
                                     <span class="material-symbols-outlined">
                                         delete
                                     </span>

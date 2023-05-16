@@ -51,6 +51,13 @@
                 $paciente = new Paciente();
                 $editPac = $paciente->buscar('idPac',$id);
             }
+            if(filter_has_var(INPUT_GET,"idDel")){
+                $id = filter_input(INPUT_GET,'idDel');
+                $paciente = new Paciente();
+                if($paciente->deletar('idPac',$id)){
+                    header('location: pacientes.php');
+                }
+            }
             if (filter_has_var(INPUT_POST, 'btnGravar')) {
                 $nomeArq = filter_input(INPUT_POST,'nomeAntigo');
                 if (isset($_FILES['filFoto'])) {
@@ -83,27 +90,28 @@
 
             ?>
             <form class="row g-3" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="txtCodigo" value="<?php echo isset($editPac->idPac) ? $editPac->idPac : null; ?>">
                 <div class="col-12">
                     <label for="txtNome" class="form-label">Nome</label>
-                    <input type="text" class="form-control" id="txtNome" placeholder="Digite seu nome..." name="txtNome">
+                    <input type="text" class="form-control" id="txtNome" placeholder="Digite seu nome..." name="txtNome" value="<?php echo isset($editPac->nomePac) ? $editPac->nomePac : null; ?>">
                 </div>
                 <div class="col-12">
                     <label for="txtEndereco" class="form-label">Endereço</label>
-                    <input type="text" class="form-control" id="txtEndereco" placeholder="Digite seu endereço..." name="txtEndereco" value="<?php echo isset($pacEdit->enderecoPac) ? $pacEdit->enderecoPac : null; ?>">
+                    <input type="text" class="form-control" id="txtEndereco" placeholder="Digite seu endereço..." name="txtEndereco" value="<?php echo isset($editPac->enderecoPac) ? $editPac->enderecoPac : null; ?>">
                 </div>
                 <div class="col-12">
                     <label for="txtBairro" class="form-label">Bairro</label>
-                    <input type="text" class="form-control" id="txtBairro" placeholder="Digite seu bairro..." name="txtBairro" value="<?php echo isset($pacEdit->bairroPac) ? $pacEdit->bairroPac : null; ?>">
+                    <input type="text" class="form-control" id="txtBairro" placeholder="Digite seu bairro..." name="txtBairro" value="<?php echo isset($editPac->bairroPac) ? $editPac->bairroPac : null; ?>">
                 </div>
                 <div class="col-md-6">
                     <label for="txtCidade" class="form-label">Cidade</label>
-                    <input type="text" class="form-control" id="txtCidade" placeholder="Digite sua cidade..." name="txtCidade" value="<?php echo isset($pacEdit->cidadePac) ? $pacEdit->cidadePac : null; ?>">
+                    <input type="text" class="form-control" id="txtCidade" placeholder="Digite sua cidade..." name="txtCidade" value="<?php echo isset($editPac->cidadePac) ? $editPac->cidadePac : null; ?>">
                 </div>
                 <div class="col-md-4">
                     <label for="sltEstado" class="form-label">Estado</label>
                     <?php $estadoSelec = isset($editPac->estadoPac)?$editPac->estadoPac:null; ?>
                     <select id="sltEstado" class="form-select" name="sltEstado">
-                        <?php $estSel = isset($pacEdit->estadoPac) ? $pacEdit->estadoPac : null; ?>
+                        <?php $estSel = isset($editPac->estadoPac) ? $editPac->estadoPac : null; ?>
                         <option value="" selected hidden>Escolha...</option>
                         <option value="AC">Acre</option>
                         <option value="AL">Alagoas</option>
@@ -136,22 +144,22 @@
                 </div>
                 <div class="col-md-2">
                     <label for="txtCep" class="form-label">Cep</label>
-                    <input type="text" class="form-control" id="txtCep" name="txtCep" value="<?php echo isset($pacEdit->cepPac) ? $pacEdit->cepPac : null; ?>">
+                    <input type="text" class="form-control" id="txtCep" name="txtCep" value="<?php echo isset($editPac->cepPac) ? $editPac->cepPac : null; ?>">
                 </div>
                 <div class="col-12">
                     <label for="txtEmail" class="form-label">E-mail</label>
-                    <input type="email" class="form-control" id="txtEmail" placeholder="Digite seu email..." name="txtEmail" value="<?php echo isset($pacEdit->emailPac) ? $pacEdit->emailPac : null; ?>">
+                    <input type="email" class="form-control" id="txtEmail" placeholder="Digite seu email..." name="txtEmail" value="<?php echo isset($editPac->emailPac) ? $editPac->emailPac : null; ?>">
                 </div>
                 <div class="col-md-6">
                     <label for="txtNascimento" class="form-label">Nascimento</label>
-                    <input type="date" class="form-control" id="txtNascimento" name="txtNascimento" value="<?php echo isset($pacEdit->nascimentoPac) ? $pacEdit->nascimentoPac : null; ?>">
+                    <input type="date" class="form-control" id="txtNascimento" name="txtNascimento" value="<?php echo isset($editPac->nascimentoPac) ? $editPac->nascimentoPac : null; ?>">
                 </div>
                 <div class="col-md-6">
                     <label for="txtCelular" class="form-label">Celular</label>
-                    <input type="text" class="form-control" id="txtCelular" name="txtCelular" value="<?php echo isset($pacEdit->celularPac) ? $pacEdit->celularPac : null; ?>">
+                    <input type="text" class="form-control" id="txtCelular" name="txtCelular" value="<?php echo isset($editPac->celularPac) ? $editPac->celularPac : null; ?>">
                 </div>
                 <div class="col-12">
-                    <input type="hidden" name="nomeAntigo" value="<?php echo isset($pacEdit->fotoPac) ? $pacEdit->fotoPac : null; ?>">
+                    <input type="hidden" name="nomeAntigo" value="<?php echo isset($editPac->fotoPac) ? $editPac->fotoPac : null; ?>">
                     <label for="filFoto" class="form-label">Adicione sua Foto</label>
                     <input class="form-control" type="file" id="filFoto" name="filFoto" accept="image/*">
                 </div>

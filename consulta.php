@@ -8,7 +8,7 @@ if (filter_has_var(INPUT_POST, 'pacienteCon')) {
 ?>
     <script>
         alert("Nenhum paciente selecionado");
-        window.location.href = "index.php"
+        window.location.href = "pacientes.php"
     </script>
 <?php
 
@@ -30,33 +30,7 @@ if (filter_has_var(INPUT_POST, 'pacienteCon')) {
 
 <body>
     <header>
-        <nav class="navbar bg-dark navbar-expand-lg" data-bs-theme="dark">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">Clinica IFRO</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.php">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="pacientes.php">Paciente</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="medicos.php">Médico</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="especialidades.php">Especialidade</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link">Consultas</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        <?php include '_part/_menu.php'?>
     </header>
     <main class="mt-3">
         <div class="container mt-3">

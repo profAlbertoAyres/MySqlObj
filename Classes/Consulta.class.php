@@ -143,7 +143,6 @@ class Consulta extends Crud
     public function atualizar($campo, $id)
     {
     }
-
     public function listar($where = null)
     {
         $sqlSelect = "select C.*, P.nomePac, M.nomeMed from {$this->tabela} C left join Paciente P on C.pacienteCon = P.idPac left join Medico M on C.medicoCon = M.idMed $where";

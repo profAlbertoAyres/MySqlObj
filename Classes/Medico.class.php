@@ -152,4 +152,6 @@ class Medico extends Crud
             header('location: medicos.php');
         }
     }
+
+ 
 }
