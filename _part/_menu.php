@@ -1,4 +1,6 @@
-
+<?php 
+    echo basename($_SERVER['PHP_SELF']);
+?>
 <nav class="navbar bg-dark navbar-expand-lg" data-bs-theme="dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">Clinica IFRO</a>
@@ -11,7 +13,7 @@
                     <a class="nav-link" href="index.php">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="pacientes.php">Paciente</a>
+                    <a class="nav-link" href="pacientes.php">Paciente</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="medicos.php">Médico</a>
@@ -20,7 +22,7 @@
                     <a class="nav-link" href="especialidades.php">Especialidade</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link">Consultas</a>
+                    <a class="nav-link" href="consultas.php">Consultas</a>
                 </li>
             </ul>
         </div>
